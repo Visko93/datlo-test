@@ -1,8 +1,9 @@
 'use client';
 
 import { Layout, Space, theme } from 'antd';
-import { Content, Header } from './styles';
+import { Content as StyleContent, Header } from './styles';
 import { Input } from '@/components/Search/Input';
+import { Content } from '@/components/Search/Content';
 
 export default function Home() {
   const handleSearch = (value: string) => {
@@ -17,7 +18,7 @@ export default function Home() {
       }}
     >
       <Header>Header</Header>
-      <Content>
+      <StyleContent>
         <h1>(Rick & Morty) + Dex</h1>
         <Space
           align="end"
@@ -34,7 +35,8 @@ export default function Home() {
             loading={false}
           />
         </Space>
-      </Content>
+        <Content list={[]} loading={true} />
+      </StyleContent>
       {/* <Footer></Footer> */}
     </Layout>
   );
