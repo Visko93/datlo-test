@@ -1,7 +1,8 @@
 'use client';
 
-import { Layout } from 'antd';
+import { Layout, Space } from 'antd';
 import { Content, Footer, Header } from './styles';
+import { Input } from '@/components/Search/Input';
 
 export default function Home() {
   return (
@@ -12,8 +13,18 @@ export default function Home() {
       }}
     >
       <Header>Header</Header>
-      <Content>Content</Content>
-      <Footer>Footer</Footer>
+      <Content>
+        <h1>(Rick & Morty) + Dex</h1>
+        <Space
+          align="end"
+          style={{
+            justifyContent: 'flex-end'
+          }}
+        >
+          <Input customStyles={{ justifySelf: 'flex-end' }} />
+        </Space>
+      </Content>
+      {/* <Footer></Footer> */}
     </Layout>
   );
 }

@@ -16,13 +16,15 @@ const StyledHeader = styled(Header)`
 `;
 
 const StyledContent = styled(Content)`
-  text-align: 'center';
-  background-color: '#f5ff';
+  display: flex;
+  flex-direction: column;
+  justify-content: 'space-between';
+
+  padding: 1em 4em;
 `;
 
 const StyledFooter = styled(Footer)`
   text-align: 'center';
-  background-color: '#f54f';
   color: '#fff';
 `;
 
