@@ -24,38 +24,37 @@
 - [use query](https://tanstack.com/query/latest/docs/react/overview) - Data fetching Lib
 - [Framer Motion](https://www.framer.com/motion/) - Animation Lib
 
-
 ### Descricao de atividades
 
-* [X] Fazer mockups no figma para a aplicacao
-* [X] Criar o projeto base com Nextjs e Typescript
-* [X] Instalar bibliotecas [necessarias]()
-* [ ] Criar Components Base
+- [X] Fazer mockups no figma para a aplicacao
+- [X] Criar o projeto base com Nextjs e Typescript
+- [X] Instalar bibliotecas [necessarias]()
+- [X] Criar Components Base
 
-  * [ ] Home
-  * [ ] SearchInpuSearchList
-  * [ ] SearchLoading
-  * [ ] SearchNotFound
-  * [ ] SearchInitial
-  * [ ] Drawer
-  * [ ] EpisodeList
-  * [ ] DrawerDetails
-  * [ ] Card
-  * [ ] CardImage
-  * [ ] CardDetails
-  * [ ] CardActionButton
-* [ ] Implementar Contexto para
+  - [X] Home
+  - [X] SearchInpuSearchList
+  - [X] SearchLoading
+  - [X] SearchNotFound
+  - [X] SearchInitial
+  - [ ] Drawer
+  - [ ] EpisodeList
+  - [ ] DrawerDetails
+  - [ ] Card
+  - [ ] CardImage
+  - [ ] CardDetails
+  - [ ] CardActionButton
+- [ ] Implementar Contexto para
 
-  * [ ] Lista de personagens
-  * [ ] Detalhe de personagens
-* [ ] Implementar conexao API
+  - [ ] Lista de personagens
+  - [ ] Detalhe de personagens
+- [ ] Implementar conexao API
 
-  * [ ] Atualiza a list de personagens em uma nove pesquisa (nao e o estado)
-  * [ ] Realiza a chamada de detalhes para 1 personagem
-* [ ] (opcional)Implementar animacoes:
+  - [ ] Atualiza a list de personagens em uma nove pesquisa (nao e o estado)
+  - [ ] Realiza a chamada de detalhes para 1 personagem
+- [ ] (opcional)Implementar animacoes:
 
-  * [ ] Entrada de Cards na lista
-  * [ ] Abertura de detalhes
-  * [ ] Inicio da pesquisa
-  * [ ] Fim da pesquisa
-  * [ ] Mount inicial
+  - [ ] Entrada de Cards na lista
+  - [ ] Abertura de detalhes
+  - [ ] Inicio da pesquisa
+  - [ ] Fim da pesquisa
+  - [ ] Mount inicial

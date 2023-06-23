@@ -1,3 +1,4 @@
+import Title from 'antd/es/typography/Title';
 import Image from 'next/image';
 
 export function NotFound() {
@@ -9,6 +10,7 @@ export function NotFound() {
         width={500}
         height={500}
       />
+      <Title>Jezz... there is no one in here</Title>
     </>
   );
 }

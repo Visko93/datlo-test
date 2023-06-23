@@ -1,4 +1,3 @@
-import { Space } from 'antd';
 import Image from 'next/image';
 
 export function Initial() {
