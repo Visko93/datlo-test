@@ -1,34 +1,62 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Search App
 
-## Getting Started
+### Necessidades
 
-First, run the development server:
+- Utilizar Next.js, TypeScript, Ant Design e Styled Components;
+- Implementar a funcionalidade de buscar e exibir uma lista de personagens utilizando a
+  API GraphQL;
+- Exibir os dados de cada personagem, incluindo sua imagem, nome, status e
+  localização;
+- Adicionar funcionalidade de busca para filtrar a lista de personagens por nome ou
+  status;
+- Garantir uma interface amigável ao usuário;
+- Utilizar o controle de versão Git e disponibilizar o código em um repositório público, no
+  GitHub;
+- Implementar a funcionalidade de remoção de um personagem da lista;
+- Adicionar uma funcionalidade de visualização de detalhes de um personagem ao clicar em um item da lista;
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+### Ferramentas
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- NextJS - Front end framework (in typescript)
+- Ant Desgin - Design System Lib
+- Styled Components - Customizacao
+- React Context + Reducer - Controle de estado
+- [use query](https://tanstack.com/query/latest/docs/react/overview) - Data fetching Lib
+- [Framer Motion](https://www.framer.com/motion/) - Animation Lib
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Descricao de atividades
 
-## Learn More
+* [X] Fazer mockups no figma para a aplicacao
+* [X] Criar o projeto base com Nextjs e Typescript
+* [ ] Instalar bibliotecas [necessarias]()
+* [ ] Criar Components Base
 
-To learn more about Next.js, take a look at the following resources:
+  * [ ] Home
+  * [ ] SearchInput
+  * [ ] SearchList
+  * [ ] SearchLoading
+  * [ ] SearchNotFound
+  * [ ] SearchInitial
+  * [ ] Drawer
+  * [ ] EpisodeList
+  * [ ] DrawerDetails
+  * [ ] Card
+  * [ ] CardImage
+  * [ ] CardDetails
+  * [ ] CardActionButton
+* [ ] Implementar Contexto para
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  * [ ] Lista de personagens
+  * [ ] Detalhe de personagens
+* [ ] Implementar conexao API
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+  * [ ] Atualiza a list de personagens em uma nove pesquisa (nao e o estado)
+  * [ ] Realiza a chamada de detalhes para 1 personagem
+* [ ] (opcional)Implementar animacoes:
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+  * [ ] Entrada de Cards na lista
+  * [ ] Abertura de detalhes
+  * [ ] Inicio da pesquisa
+  * [ ] Fim da pesquisa
+  * [ ] Mount inicial
