@@ -29,12 +29,11 @@
 
 * [X] Fazer mockups no figma para a aplicacao
 * [X] Criar o projeto base com Nextjs e Typescript
-* [ ] Instalar bibliotecas [necessarias]()
+* [X] Instalar bibliotecas [necessarias]()
 * [ ] Criar Components Base
 
   * [ ] Home
-  * [ ] SearchInput
-  * [ ] SearchList
+  * [ ] SearchInpuSearchList
   * [ ] SearchLoading
   * [ ] SearchNotFound
   * [ ] SearchInitial
