@@ -1,10 +1,14 @@
 'use client';
 
-import { Layout, Space } from 'antd';
-import { Content, Footer, Header } from './styles';
+import { Layout, Space, theme } from 'antd';
+import { Content, Header } from './styles';
 import { Input } from '@/components/Search/Input';
 
 export default function Home() {
+  const handleSearch = (value: string) => {
+    if (value === '' || !value) return;
+    console.log(value);
+  };
   return (
     <Layout
       style={{
@@ -21,7 +25,14 @@ export default function Home() {
             justifyContent: 'flex-end'
           }}
         >
-          <Input customStyles={{ justifySelf: 'flex-end' }} />
+          <Input
+            placeholder="Search by character name"
+            enterButton="Search"
+            size="large"
+            onSearch={handleSearch}
+            allowClear
+            loading={false}
+          />
         </Space>
       </Content>
       {/* <Footer></Footer> */}

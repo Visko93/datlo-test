@@ -21,6 +21,8 @@ const StyledContent = styled(Content)`
   justify-content: 'space-between';
 
   padding: 1em 4em;
+
+  background-color: #fff;
 `;
 
 const StyledFooter = styled(Footer)`
