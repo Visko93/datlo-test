@@ -23,6 +23,7 @@ interface CharacterProps {
 interface CardProps {
   character?: CharacterProps;
   loading?: boolean;
+  onClick: (id: string) => void;
 }
 
 export type { CardProps, LocationProps, SearchProps, CharacterProps };
