@@ -1,6 +1,23 @@
+interface LocationProps {
+  id: string | null;
+  name: string;
+  dimension: string | null;
+}
+
+interface CharacterProps {
+  id: string;
+  name: string;
+  species: string;
+  type: string;
+  gender: string;
+  image: string;
+  created: string;
+  location: LocationProps;
+  status?: 'Dead' | 'Alive' | 'unknown' | string;
+}
 interface CardProps {
-  image?: string;
+  character?: CharacterProps;
   loading?: boolean;
 }
 
-export type { CardProps };
+export type { CardProps, LocationProps };
