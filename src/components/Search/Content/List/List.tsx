@@ -1,9 +1,8 @@
 import { CharacterCard } from '../../Card';
 import { SearchList } from './style';
-import data from '@/utils/mockData.json';
+import { ListProps } from './type';
 
-export function List() {
-  const list = data.results;
+export function List({ list }: ListProps) {
   return (
     <SearchList>
       {list.map((item, index) => {

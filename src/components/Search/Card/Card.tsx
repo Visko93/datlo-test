@@ -8,10 +8,10 @@ import {
   StyledImageContainer,
   StyledTitle
 } from './style';
-import { CardProps } from './type';
 import { Skeleton, Space } from 'antd';
 import { RemoveButton } from './RemoveButton';
 import { Drawer } from '@/components/Details/Drawer/Drawer';
+import type { CardProps } from '../Content/type';
 
 function CharacterCard({ character, loading }: CardProps) {
   if (!character) return null;

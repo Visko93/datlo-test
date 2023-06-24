@@ -10,8 +10,15 @@ const StyledCard = styled.div`
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 
-  width: 350px;
+  width: 325px;
   height: 150px;
+  transition: box-shadow 0.2s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.5);
+    transition: box-shadow 0.2s ease-in-out;
+  }
 `;
 
 const StyledImage = styled(Image)`

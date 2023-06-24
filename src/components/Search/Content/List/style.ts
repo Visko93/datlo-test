@@ -2,9 +2,10 @@ import styled from 'styled-components';
 
 const SearchList = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 1rem;
-  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
+  gap: 0.25rem;
+  justify-items: center;
+
   margin-top: 1rem;
 `;
 
