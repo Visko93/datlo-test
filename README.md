@@ -26,31 +26,34 @@
 
 ### Descricao de atividades
 
-- [X] Fazer mockups no figma para a aplicacao
-- [X] Criar o projeto base com Nextjs e Typescript
-- [X] Instalar bibliotecas [necessarias]()
-- [X] Criar Components Base
+- [x] Fazer mockups no figma para a aplicacao
+- [x] Criar o projeto base com Nextjs e Typescript
+- [x] Instalar bibliotecas [necessarias]()
+- [x] Criar Components Base
 
-  - [X] Home
-  - [X] SearchInpuSearchList
-  - [X] SearchLoading
-  - [X] SearchNotFound
-  - [X] SearchInitial
-  - [ ] Drawer
-  - [ ] EpisodeList
-  - [ ] DrawerDetails
-  - [ ] Card
-  - [ ] CardImage
-  - [ ] CardDetails
-  - [ ] CardActionButton
+  - [x] Home
+  - [x] SearchInpuSearchList
+  - [x] SearchLoading
+  - [x] SearchNotFound
+  - [x] SearchInitial
+  - [x] Drawer
+  - [x] EpisodeList
+  - [x] DrawerDetails
+  - [x] Card
+  - [x] CardImage
+  - [x] CardDetails
+  - [x] CardActionButton
+
 - [ ] Implementar Contexto para
 
   - [ ] Lista de personagens
-  - [ ] Detalhe de personagens
+  - [x] Detalhe de personagens
+
 - [ ] Implementar conexao API
 
   - [ ] Atualiza a list de personagens em uma nove pesquisa (nao e o estado)
-  - [ ] Realiza a chamada de detalhes para 1 personagem
+  - [x] Realiza a chamada de detalhes para 1 personagem
+
 - [ ] (opcional)Implementar animacoes:
 
   - [ ] Entrada de Cards na lista
