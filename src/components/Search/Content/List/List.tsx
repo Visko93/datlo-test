@@ -5,10 +5,12 @@ import { ListProps } from './type';
 import { Drawer } from '@/components/Details/Drawer';
 import { useDetails } from '@/state/Details';
 import { useDrawer } from '@/components/Details/hooks';
-import { Character } from '@/gql/graphql';
+import { Character, Maybe } from '@/gql/graphql';
+import { useSearch } from '@/state/Search';
 
 export function List({ list }: { list: ListProps }) {
-  const { state } = useDetails();
+  const { state: detailsState } = useDetails();
+  const { state: searchState } = useSearch();
   const { closeDrawer, openDrawer } = useDrawer();
 
   if (!list) return null;
@@ -16,12 +18,13 @@ export function List({ list }: { list: ListProps }) {
     <>
       <SearchList>
         {list.map((item, index) => {
+          if (searchState.data.blackListed.includes(item!.id!)) return null;
           return <CharacterCard key={index} character={item as Character} />;
         })}
       </SearchList>
       <Drawer
-        characterId={state.data?.selected!}
-        open={state.data?.open}
+        characterId={detailsState.data?.selected!}
+        open={detailsState.data?.open}
         onClose={closeDrawer}
         onOpen={openDrawer}
       />

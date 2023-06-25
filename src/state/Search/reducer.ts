@@ -2,12 +2,11 @@ import { Characters } from '@/gql/graphql';
 import {
   BLACKLIST_CHARACTER,
   BLACKLIST_CHARACTER_LOADING,
-  BLACKLIST_CHARACTER_REMOVE,
+  BLACKLIST_CHARACTER_CLEAR,
   CHANGE_PAGE,
   CHANGE_SEARCH,
   GET_CHARACTERS_LIST,
-  GET_CHARACTERS_LIST_LOADING,
-  NEXT_PAGE
+  GET_CHARACTERS_LIST_LOADING
 } from './actions';
 import type { SearchActions } from './selectors';
 
@@ -21,6 +20,7 @@ export interface DataState {
 export interface SearchState {
   data: DataState;
   loading: boolean;
+  removing: boolean;
   error: Error | null;
 }
 
@@ -32,6 +32,7 @@ export const initialState: SearchState = {
     page: 1
   },
   loading: false,
+  removing: false,
   error: null
 };
 
@@ -52,39 +53,30 @@ export function reducer(state = initialState, action: SearchActions): SearchStat
         loading: true
       };
     case BLACKLIST_CHARACTER:
-      debugger;
+      const { blackListed } = state.data;
+      if (blackListed.includes(action.payload)) return state;
+      const newList = [...blackListed];
+      newList.push(action.payload);
       return {
         ...state,
         loading: false,
         data: {
           ...state.data,
-          blackListed:
-            state.data.blackListed.length === 0
-              ? [action.payload]
-              : [...state.data.blackListed, action.payload]
+          blackListed: newList
         }
       };
     case BLACKLIST_CHARACTER_LOADING:
       return {
         ...state,
-        loading: true
+        removing: true
       };
-    case BLACKLIST_CHARACTER_REMOVE:
+    case BLACKLIST_CHARACTER_CLEAR:
       return {
         ...state,
         loading: false,
         data: {
           ...state.data,
-          blackListed: state.data.blackListed.filter((id) => id !== action.payload)
-        }
-      };
-    case CHANGE_PAGE:
-      return {
-        ...state,
-        loading: false,
-        data: {
-          ...state.data,
-          page: action.payload
+          blackListed: []
         }
       };
     case CHANGE_SEARCH: {

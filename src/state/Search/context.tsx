@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  initialState,
-  reducer as SearchReducer,
-  DataState,
-  SearchState
-} from './reducer';
+import { initialState, reducer as SearchReducer, SearchState } from './reducer';
 import type { SearchActions } from './selectors';
 
 const SearchContext = React.createContext<{

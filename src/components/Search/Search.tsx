@@ -1,9 +1,14 @@
 import * as React from 'react';
 import { StyledContent } from './sytle';
-import { Pagination, PaginationProps, Space } from 'antd';
+import { Affix, Badge, Button, Pagination, PaginationProps, Space } from 'antd';
 import { Input } from './Input';
 import { Content } from './Content';
-import { CHANGE_PAGE, CHANGE_SEARCH, useSearch } from '@/state/Search';
+import {
+  BLACKLIST_CHARACTER_CLEAR,
+  CHANGE_PAGE,
+  CHANGE_SEARCH,
+  useSearch
+} from '@/state/Search';
 import { useSearchCharacter } from './hooks/useSearchCharacter';
 
 export function Search() {
@@ -13,6 +18,7 @@ export function Search() {
 
   const list = state.data.list?.results;
   const metaList = state.data.list?.info;
+  const blackListCount = state.data.blackListed.length;
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
@@ -23,17 +29,27 @@ export function Search() {
     handlePageChange(1);
   };
 
-  console.debug('isLoading', isLoading);
-  console.debug('State', state);
+  const handleClearBlackList = () => {
+    dispatch && dispatch({ type: BLACKLIST_CHARACTER_CLEAR });
+  };
+
+  console.debug('State', state.data);
   return (
     <StyledContent>
       <h1>(Rick & Morty) + Dex</h1>
       <Space
         align="end"
         style={{
-          justifyContent: 'flex-end'
+          justifyContent: 'space-between'
         }}
       >
+        <Affix offsetTop={10}>
+          <Badge count={blackListCount}>
+            <Button type="primary" onClick={handleClearBlackList}>
+              Clear Blacklist
+            </Button>
+          </Badge>
+        </Affix>
         <Input
           placeholder="Search by character name"
           enterButton="Search"

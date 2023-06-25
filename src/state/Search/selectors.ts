@@ -5,7 +5,7 @@ import {
   GET_CHARACTERS_LIST_LOADING,
   BLACKLIST_CHARACTER,
   BLACKLIST_CHARACTER_LOADING,
-  BLACKLIST_CHARACTER_REMOVE,
+  BLACKLIST_CHARACTER_CLEAR,
   CHANGE_PAGE
 } from './actions';
 
@@ -37,19 +37,13 @@ export const blacklistCharacterLoading = () => ({
   type: BLACKLIST_CHARACTER_LOADING
 });
 
-export const blacklistCharacterRemove = (id: string) => ({
-  type: BLACKLIST_CHARACTER_REMOVE,
-  payload: id as string
+export const blacklistCharacterRemove = () => ({
+  type: BLACKLIST_CHARACTER_CLEAR
 });
 
 export const changePage = (page: number) => ({
   type: CHANGE_PAGE,
   payload: page as number
-});
-
-export const changeSearch = (search: string) => ({
-  type: CHANGE_PAGE,
-  payload: search as string
 });
 
 export type SearchActions =
@@ -59,5 +53,4 @@ export type SearchActions =
   | ReturnType<typeof blacklistCharacter>
   | ReturnType<typeof blacklistCharacterLoading>
   | ReturnType<typeof blacklistCharacterRemove>
-  | ReturnType<typeof changePage>
-  | ReturnType<typeof changeSearch>;
+  | ReturnType<typeof changePage>;

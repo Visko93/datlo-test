@@ -17,21 +17,22 @@ import {
   OPEN_CHARACTER_DETAILS,
   useDetails
 } from '@/state/Details';
-import { BLACKLIST_CHARACTER } from '@/state/Search';
+import { BLACKLIST_CHARACTER, useSearch } from '@/state/Search';
 
 function CharacterCard({ character, loading }: CardProps) {
   if (!character) return null;
-  const { dispatch } = useDetails();
+  const { dispatch: detailsReducer } = useDetails();
+  const { dispatch: searchReducer } = useSearch();
   const { name, image, location, status, id } = character;
 
   const hadleCharacterSelect = () => {
-    dispatch && dispatch({ type: GET_SELECT_CHARACTER, payload: id! });
-    dispatch && dispatch({ type: OPEN_CHARACTER_DETAILS });
+    detailsReducer && detailsReducer({ type: GET_SELECT_CHARACTER, payload: id! });
+    detailsReducer && detailsReducer({ type: OPEN_CHARACTER_DETAILS });
   };
 
   const handleRemoveCharacter = () => {
     console.debug('Remove Character', id);
-    dispatch && dispatch({ type: BLACKLIST_CHARACTER, payload: id! });
+    searchReducer && searchReducer({ type: BLACKLIST_CHARACTER, payload: id! });
   };
 
   return (
