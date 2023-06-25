@@ -1,9 +1,9 @@
 import { StyledDetails } from './style';
 import type { DetailsProps } from './type';
 
-export function Details({ text, icon }: DetailsProps) {
+export function Details({ text, icon, ...rest }: DetailsProps) {
   return (
-    <StyledDetails>
+    <StyledDetails {...rest}>
       {icon ? icon : null}
       <p>{text}</p>
     </StyledDetails>

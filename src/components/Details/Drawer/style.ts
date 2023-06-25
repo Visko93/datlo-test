@@ -1,11 +1,4 @@
-import { Drawer } from 'antd';
 import styled from 'styled-components';
-
-const StyledDrawer = styled(Drawer)`
-  .ant-drawer-body {
-    padding: 0;
-  }
-`;
 
 const StyledHeader = styled.section<{ backgroundImage: string }>`
   background-image: url(${({ backgroundImage }) => backgroundImage});
@@ -76,4 +69,4 @@ const StyledEpisodes = styled.section`
   padding: 0 1rem;
 `;
 
-export { StyledHeader, StyledContent, StyledDrawer, StyledEpisodes };
+export { StyledHeader, StyledContent, StyledEpisodes };

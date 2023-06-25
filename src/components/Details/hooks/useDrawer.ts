@@ -4,7 +4,6 @@ import {
   OPEN_CHARACTER_DETAILS,
   useDetails
 } from '@/state/Details';
-import React from 'react';
 
 export function useDrawer() {
   const { state, dispatch } = useDetails();
@@ -15,8 +14,6 @@ export function useDrawer() {
       openDrawer: () => {},
       closeDrawer: () => {}
     };
-
-  React.useEffect(() => {}, [state.data?.character?.id, state.data?.open]);
 
   const openDrawer = () => {
     dispatch &&

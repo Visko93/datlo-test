@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { List } from 'antd';
+import { List, Drawer as AntdDrawer } from 'antd';
 import {
   AimOutlined,
   ExperimentOutlined,
@@ -8,13 +8,15 @@ import {
   ManOutlined,
   WomanOutlined
 } from '@ant-design/icons';
-import { Episode } from '@/gql/graphql';
+import { Character, Episode } from '@/gql/graphql';
 import { Details } from '@/components/Search/Card/Details';
 
-import { StyledContent, StyledDrawer, StyledEpisodes, StyledHeader } from './style';
+import { StyledContent, StyledEpisodes, StyledHeader } from './style';
 import type { DrawerProps } from './type';
 import { useSelectCharacter } from '../hooks/useSelectCharacter';
 import { useDetails } from '@/state/Details';
+import { Loading } from '@/components/Search/Content/Loading';
+import { NotFound } from '@/components/Search/Content/NotFound';
 
 const mock = {
   character: {
@@ -195,96 +197,143 @@ const mock = {
 function Drawer({ open, characterId, onClose }: DrawerProps) {
   if (!characterId) return null;
   const { state } = useDetails();
-  const { isError, isLoading } = useSelectCharacter(characterId);
+  const isOpen = state.data?.open;
 
-  if (!state.data?.character) {
-    return null;
-  }
+  const { data, isError, isLoading } = useSelectCharacter(characterId);
+  const character = data?.character;
+  const content = () => {
+    if (isLoading) return <Loading />;
+    return (
+      <>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <>
+            {' '}
+            <StyledHeader backgroundImage={character?.image!}>
+              <h2>{character?.name}</h2>
+              <div>
+                <FireOutlined
+                  style={{
+                    color: character?.status === 'Alive' ? 'green' : 'red',
+                    fontSize: '1.5em'
+                  }}
+                />
+                <h3>{character?.status}</h3>
+              </div>
+            </StyledHeader>
+            <StyledContent>
+              <Details
+                style={{
+                  marginBottom: '1em'
+                }}
+                text={character?.location!.name || 'Not Found'}
+                icon={
+                  <AimOutlined
+                    style={{
+                      fontSize: '1.5em'
+                    }}
+                  />
+                }
+              />
+              <Details
+                style={{
+                  marginBottom: '1em'
+                }}
+                text={character?.species!}
+                icon={
+                  <ExperimentOutlined
+                    style={{
+                      fontSize: '1.5em'
+                    }}
+                  />
+                }
+              />
+              <Details
+                style={{
+                  marginBottom: '1em'
+                }}
+                text={character?.location!.dimension!}
+                icon={
+                  <GatewayOutlined
+                    style={{
+                      fontSize: '1.5em'
+                    }}
+                  />
+                }
+              />
+              <Details
+                style={{
+                  marginBottom: '1em'
+                }}
+                text={character?.gender!}
+                icon={
+                  character?.gender === 'Male' ? (
+                    <ManOutlined
+                      style={{
+                        fontSize: '1.5em'
+                      }}
+                    />
+                  ) : (
+                    <WomanOutlined
+                      style={{
+                        fontSize: '1.5em'
+                      }}
+                    />
+                  )
+                }
+              />
+            </StyledContent>
+            <StyledEpisodes>
+              <h3>Episodes</h3>
+              {character?.episode && (
+                <List
+                  dataSource={character?.episode as Episode[]}
+                  pagination={{
+                    position: 'bottom',
+                    align: 'center',
+                    pageSize: 5,
+                    showSizeChanger: false,
+                    showLessItems: true
+                  }}
+                  renderItem={(item: Episode) => (
+                    <List.Item key={item.id}>
+                      <List.Item.Meta
+                        title={
+                          <a
+                            href={`https://www.google.com/search?q="Rick+Morty"+"${
+                              item!.name
+                            }"`}
+                            rel="noreferrer"
+                            target="_blank"
+                          >
+                            {item!.name}
+                          </a>
+                        }
+                        description={item!.air_date}
+                      />
+                    </List.Item>
+                  )}
+                />
+              )}
+            </StyledEpisodes>
+          </>
+        )}
+      </>
+    );
+  };
+
   return (
-    <StyledDrawer
+    <AntdDrawer
       placement={'right'}
       width={500}
       onClose={onClose}
-      open={open}
+      open={isOpen}
       getContainer={false}
+      height={'100%'}
     >
-      <StyledHeader backgroundImage={state.data.character?.image!}>
-        <h2>{state.data.character?.name}</h2>
-        <div>
-          <FireOutlined
-            style={{
-              color: state.data.character?.status === 'Alive' ? 'green' : 'red',
-              fontSize: '1.5em'
-            }}
-          />
-          <h3>{state.data.character?.status}</h3>
-        </div>
-      </StyledHeader>
-      <StyledContent>
-        <Details
-          text={state.data.character?.location!.name || 'Not Found'}
-          icon={
-            <AimOutlined
-              style={{
-                fontSize: '1.5em'
-              }}
-            />
-          }
-        />
-        <Details
-          text={state.data.character?.species!}
-          icon={
-            <ExperimentOutlined
-              style={{
-                fontSize: '1.5em'
-              }}
-            />
-          }
-        />
-        <Details
-          text={state.data.character?.location!.dimension!}
-          icon={
-            <GatewayOutlined
-              style={{
-                fontSize: '1.5em'
-              }}
-            />
-          }
-        />
-        <Details
-          text={state.data.character?.gender!}
-          icon={
-            state.data.character?.gender === 'Male' ? (
-              <ManOutlined
-                style={{
-                  fontSize: '1.5em'
-                }}
-              />
-            ) : (
-              <WomanOutlined
-                style={{
-                  fontSize: '1.5em'
-                }}
-              />
-            )
-          }
-        />
-      </StyledContent>
-      <StyledEpisodes>
-        <h3>Episodes</h3>
-        <List
-          dataSource={state.data.character?.episode as Episode[]}
-          renderItem={(item: Episode) => (
-            <List.Item key={item.id}>
-              <List.Item.Meta
-                title={<a href="https://ant.design">{item!.name}</a>}
-                description={item!.air_date}
-              />
-            </List.Item>
-          )}
-        />
-      </StyledEpisodes>
-    </StyledDrawer>
+      {content()}
+    </AntdDrawer>
   );
 }
 

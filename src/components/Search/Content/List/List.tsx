@@ -17,14 +17,12 @@ export function List({ list }: ListProps) {
           return <CharacterCard key={index} character={item} loading={false} />;
         })}
       </SearchList>
-      {state.data?.selected && (
-        <Drawer
-          characterId={state.data?.selected}
-          open={state.data?.open}
-          onClose={closeDrawer}
-          onOpen={openDrawer}
-        />
-      )}
+      <Drawer
+        characterId={state.data?.selected!}
+        open={state.data?.open}
+        onClose={closeDrawer}
+        onOpen={openDrawer}
+      />
     </>
   );
 }

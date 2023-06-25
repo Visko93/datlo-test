@@ -1,19 +1,12 @@
 'use client';
 
-import { Layout, Space, theme } from 'antd';
-import { Content as StyleContent, Header } from './styles';
-import { Input } from '@/components/Search/Input';
 import * as React from 'react';
+import { Layout, Space } from 'antd';
+import { Header } from './styles';
 import { AppProviders } from '@/state/AppProvider';
-import { Content } from '@/components/Search/Content';
-import { Drawer } from '@/components/Details/Drawer';
-import { useDrawer } from '@/components/Details/hooks';
+import { Search } from '@/components/Search';
 
 export default function Home() {
-  const handleSearch = (value: string) => {
-    if (value === '' || !value) return;
-  };
-
   return (
     <AppProviders>
       <Layout
@@ -22,26 +15,8 @@ export default function Home() {
           margin: 0
         }}
       >
-        <Header>Header</Header>
-        <StyleContent>
-          <h1>(Rick & Morty) + Dex</h1>
-          <Space
-            align="end"
-            style={{
-              justifyContent: 'flex-end'
-            }}
-          >
-            <Input
-              placeholder="Search by character name"
-              enterButton="Search"
-              size="large"
-              onSearch={handleSearch}
-              allowClear
-              loading={false}
-            />
-          </Space>
-          <Content list={[]} loading={true} />
-        </StyleContent>
+        <Header />
+        <Search />
         {/* <Footer></Footer> */}
       </Layout>
     </AppProviders>
