@@ -1,7 +1,5 @@
-import type { CharacterProps } from '../type';
+import { Character, Maybe } from '@/gql/graphql';
 
-interface ListProps {
-  list: CharacterProps[];
-}
+type ListProps = Maybe<Maybe<Character>[]> | undefined;
 
 export type { ListProps };

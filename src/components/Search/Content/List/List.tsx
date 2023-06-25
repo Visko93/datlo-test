@@ -5,16 +5,18 @@ import { ListProps } from './type';
 import { Drawer } from '@/components/Details/Drawer';
 import { useDetails } from '@/state/Details';
 import { useDrawer } from '@/components/Details/hooks';
+import { Character } from '@/gql/graphql';
 
-export function List({ list }: ListProps) {
+export function List({ list }: { list: ListProps }) {
   const { state } = useDetails();
   const { closeDrawer, openDrawer } = useDrawer();
 
+  if (!list) return null;
   return (
     <>
       <SearchList>
         {list.map((item, index) => {
-          return <CharacterCard key={index} character={item} loading={false} />;
+          return <CharacterCard key={index} character={item as Character} />;
         })}
       </SearchList>
       <Drawer

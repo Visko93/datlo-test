@@ -9,15 +9,11 @@ export function Input({
   enterButton = 'Search',
   size = 'middle',
   loading = false,
-  onSearch = () => {},
-  customStyles = {}
+  customStyles = {},
+  search,
+  handleSearch = () => {},
+  handleChange = () => {}
 }: InputProps) {
-  const [value, setValue] = React.useState('');
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
-  };
-
   return (
     <ConfigProvider
       theme={{
@@ -27,14 +23,14 @@ export function Input({
       }}
     >
       <SearchInput
-        value={value}
+        value={search}
         onChange={handleChange}
         placeholder={placeholder}
         allowClear={allowClear}
         enterButton={enterButton}
         size={size}
         loading={loading}
-        onSearch={() => onSearch(value)}
+        onSearch={handleSearch}
         style={customStyles}
       />
     </ConfigProvider>

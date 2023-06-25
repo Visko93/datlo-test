@@ -198,9 +198,9 @@ function Drawer({ open, characterId, onClose }: DrawerProps) {
   if (!characterId) return null;
   const { state } = useDetails();
   const isOpen = state.data?.open;
-
   const { data, isError, isLoading } = useSelectCharacter(characterId);
   const character = data?.character;
+
   const content = () => {
     if (isLoading) return <Loading />;
     return (

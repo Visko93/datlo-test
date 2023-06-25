@@ -13,9 +13,9 @@ export function useSelectCharacter(id: string) {
   const { dispatch } = useDetails();
   const { data, isLoading, isError } = useQuery({
     queryKey: ['character', id],
-    queryFn: () => {
+    queryFn: async () => {
       if (id) {
-        return fetchCharacter(id);
+        return await fetchCharacter(id);
       }
       return null; // or any appropriate default value when characterId is not available
     },

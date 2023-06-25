@@ -8,8 +8,10 @@ export type FetchCharactersListProps = {
   search?: string;
 };
 
-export const fetchCharactersList = async ({ page, search }: FetchCharactersListProps) =>
-  request<Characters>(END_POINT, charactersQuery, {
+// @ts-ignore
+export const fetchCharactersList = async ({ page, search }) => {
+  return await request<Characters>(END_POINT, charactersQuery, {
     page,
     name: search || ''
   });
+};

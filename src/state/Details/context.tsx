@@ -1,16 +1,9 @@
 import * as React from 'react';
-import { initialState, reducer as DetailsReducer, DataState } from './reducer';
-import type { Character } from '@/gql/graphql';
+import { initialState, reducer as DetailsReducer, DetailsState } from './reducer';
 import type { DetailsActions } from './selectors';
 
-type DetailsContextType = {
-  loading: boolean;
-  error: Error | null;
-  data: DataState | null;
-};
-
 const DetailsContext = React.createContext<{
-  state: DetailsContextType;
+  state: DetailsState;
   dispatch?: React.Dispatch<DetailsActions>;
 }>({
   state: initialState

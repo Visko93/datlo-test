@@ -17,6 +17,7 @@ import {
   OPEN_CHARACTER_DETAILS,
   useDetails
 } from '@/state/Details';
+import { BLACKLIST_CHARACTER } from '@/state/Search';
 
 function CharacterCard({ character, loading }: CardProps) {
   if (!character) return null;
@@ -24,14 +25,20 @@ function CharacterCard({ character, loading }: CardProps) {
   const { name, image, location, status, id } = character;
 
   const hadleCharacterSelect = () => {
-    dispatch && dispatch({ type: GET_SELECT_CHARACTER, payload: id });
+    dispatch && dispatch({ type: GET_SELECT_CHARACTER, payload: id! });
     dispatch && dispatch({ type: OPEN_CHARACTER_DETAILS });
   };
+
+  const handleRemoveCharacter = () => {
+    console.debug('Remove Character', id);
+    dispatch && dispatch({ type: BLACKLIST_CHARACTER, payload: id! });
+  };
+
   return (
     <Card>
       <StyledImageContainer>
         {!loading ? (
-          <StyledImage src={image} alt="Rick Sanchez" width={128} height={150} />
+          <StyledImage src={image!} alt="Rick Sanchez" width={128} height={150} />
         ) : (
           <Skeleton.Image
             active={loading}
@@ -53,7 +60,7 @@ function CharacterCard({ character, loading }: CardProps) {
             <StyledFloatButton icon={<FireOutlined />} onClick={hadleCharacterSelect} />
             <StyledFloatButton
               icon={<MinusCircleOutlined />}
-              onClick={(e) => {}}
+              onClick={handleRemoveCharacter}
               as={Button}
               danger
               type="text"
