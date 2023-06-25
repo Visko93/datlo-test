@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  AimOutlined,
-  CommentOutlined,
-  CustomerServiceOutlined,
-  FireOutlined,
-  PlusCircleOutlined
-} from '@ant-design/icons';
+import { AimOutlined, FireOutlined, MinusCircleOutlined } from '@ant-design/icons';
 import { Details } from './Details';
 import {
   Card,
@@ -16,21 +10,25 @@ import {
   StyledImageContainer,
   StyledTitle
 } from './style';
-import { Button, FloatButton, Skeleton, Space } from 'antd';
-import { RemoveButton } from './RemoveButton';
-import { Drawer } from '@/components/Details/Drawer/Drawer';
+import { Button, Skeleton, Space } from 'antd';
 import type { CardProps } from '../Content/type';
+import {
+  GET_SELECT_CHARACTER,
+  OPEN_CHARACTER_DETAILS,
+  useDetails
+} from '@/state/Details';
 
-function CharacterCard({ character, loading, onClick }: CardProps) {
+function CharacterCard({ character, loading }: CardProps) {
   if (!character) return null;
+  const { dispatch } = useDetails();
   const { name, image, location, status, id } = character;
-  const [open, setOpen] = React.useState(true);
 
-  const onChange = (checked: boolean) => {
-    setOpen(checked);
+  const hadleCharacterSelect = () => {
+    dispatch && dispatch({ type: GET_SELECT_CHARACTER, payload: id });
+    dispatch && dispatch({ type: OPEN_CHARACTER_DETAILS });
   };
   return (
-    <Card onClick={() => onClick(id)}>
+    <Card>
       <StyledImageContainer>
         {!loading ? (
           <StyledImage src={image} alt="Rick Sanchez" width={128} height={150} />
@@ -52,8 +50,15 @@ function CharacterCard({ character, loading, onClick }: CardProps) {
             <Details text={status || 'Unknown'} icon={<FireOutlined />} />
           </Space>
           <StyledActions>
-            <StyledFloatButton onClick={() => console.log('click')} />
-            <StyledFloatButton onClick={() => console.log('click')} />
+            <StyledFloatButton icon={<FireOutlined />} onClick={hadleCharacterSelect} />
+            <StyledFloatButton
+              icon={<MinusCircleOutlined />}
+              onClick={(e) => {}}
+              as={Button}
+              danger
+              type="text"
+              shape="circle"
+            />
           </StyledActions>
         </StyledContent>
       </Skeleton>

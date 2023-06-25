@@ -7,7 +7,7 @@ import styled from 'styled-components';
 const StyledHeader = styled(Header)`
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 1000;
   width: 100%;
   display: flex;
   align-items: center;

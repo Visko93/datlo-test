@@ -1,21 +1,15 @@
 import { Card, FloatButton } from 'antd';
-import Title from 'antd/es/typography/Title';
 import Image from 'next/image';
 import styled from 'styled-components';
 
 const StyledCard = styled.div`
   display: flex;
-  justify-content: space-between;
 
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 
   width: 325px;
   height: 150px;
-
-  &:hover {
-    cursor: pointer;
-  }
 `;
 
 const StyledImage = styled(Image)`
@@ -46,13 +40,13 @@ const StyledImageContainer = styled.div`
 `;
 const StyledContent = styled.div`
   position: relative;
-  padding: 0 0.5rem 0.5rem 0.5rem;
+  padding: 0 0.25rem 0 0.25rem;
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 
-  flex: 1 1 60;
+  flex: 1;
   max-width: calc(60% - 1rem);
 `;
 const StyledActions = styled.div`
@@ -61,9 +55,14 @@ const StyledActions = styled.div`
   max-height: 100%;
   display: flex;
   justify-content: flex-end;
+
+  &:not(:last-child) {
+    margin-right: 0.5rem;
+  }
 `;
+
 const StyledTitle = styled.h4`
-  margin: 0.5rem 0 0.25rem 0;
+  margin: 0.75rem 0 0.25rem 0;
 
   height: 1.7rem;
   font-weight: 600;
@@ -78,6 +77,8 @@ const StyledTitle = styled.h4`
 const StyledFloatButton = styled(FloatButton)`
   position: static;
 
+  margin: 0;
+  padding: 0;
   width: 2rem;
   height: 2rem;
 

@@ -6,6 +6,12 @@ const StyledDetails = styled.div`
 
   & p {
     margin: 0.25rem 0;
+
+    font-size: 0.75rem;
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   & :is(:first-child) {
     margin-right: 0.25rem;

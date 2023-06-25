@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
-import { List, Space } from 'antd';
-import { useQuery } from '@tanstack/react-query';
-import request from 'graphql-request';
+import * as React from 'react';
+import { List } from 'antd';
 import {
   AimOutlined,
   ExperimentOutlined,
@@ -10,10 +8,13 @@ import {
   ManOutlined,
   WomanOutlined
 } from '@ant-design/icons';
+import { Episode } from '@/gql/graphql';
 import { Details } from '@/components/Search/Card/Details';
+
 import { StyledContent, StyledDrawer, StyledEpisodes, StyledHeader } from './style';
 import type { DrawerProps } from './type';
-import { useDetails } from '../hooks/useDetails';
+import { useSelectCharacter } from '../hooks/useSelectCharacter';
+import { useDetails } from '@/state/Details';
 
 const mock = {
   character: {
@@ -191,102 +192,100 @@ const mock = {
   }
 };
 
-export function Drawer({ children, characterId }: DrawerProps) {
-  const { data, error } = useDetails(characterId!);
-  const [open, setOpen] = useState(false);
+function Drawer({ open, characterId, onClose }: DrawerProps) {
+  if (!characterId) return null;
+  const { state } = useDetails();
+  const { isError, isLoading } = useSelectCharacter(characterId);
 
-  const showDrawer = () => {
-    setOpen(true);
-  };
-
-  const onClose = (
-    e: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>
-  ) => {
-    e.stopPropagation();
-    setOpen(false);
-  };
-
+  if (!state.data?.character) {
+    return null;
+  }
   return (
-    <>
-      <div onClick={showDrawer}>{children}</div>
-      <StyledDrawer placement={'right'} width={500} onClose={onClose} open={open}>
-        <StyledHeader backgroundImage={mock.character.image}>
-          <h2>{mock.character.name}</h2>
-          <div>
-            <FireOutlined
+    <StyledDrawer
+      placement={'right'}
+      width={500}
+      onClose={onClose}
+      open={open}
+      getContainer={false}
+    >
+      <StyledHeader backgroundImage={state.data.character?.image!}>
+        <h2>{state.data.character?.name}</h2>
+        <div>
+          <FireOutlined
+            style={{
+              color: state.data.character?.status === 'Alive' ? 'green' : 'red',
+              fontSize: '1.5em'
+            }}
+          />
+          <h3>{state.data.character?.status}</h3>
+        </div>
+      </StyledHeader>
+      <StyledContent>
+        <Details
+          text={state.data.character?.location!.name || 'Not Found'}
+          icon={
+            <AimOutlined
               style={{
-                color: mock.character.status === 'Alive' ? 'green' : 'red',
                 fontSize: '1.5em'
               }}
             />
-            <h3>{mock.character.status}</h3>
-          </div>
-        </StyledHeader>
-        <StyledContent>
-          <Details
-            text={mock.character.location.name || 'Not Found'}
-            icon={
-              <AimOutlined
+          }
+        />
+        <Details
+          text={state.data.character?.species!}
+          icon={
+            <ExperimentOutlined
+              style={{
+                fontSize: '1.5em'
+              }}
+            />
+          }
+        />
+        <Details
+          text={state.data.character?.location!.dimension!}
+          icon={
+            <GatewayOutlined
+              style={{
+                fontSize: '1.5em'
+              }}
+            />
+          }
+        />
+        <Details
+          text={state.data.character?.gender!}
+          icon={
+            state.data.character?.gender === 'Male' ? (
+              <ManOutlined
                 style={{
                   fontSize: '1.5em'
                 }}
               />
-            }
-          />
-          <Details
-            text={mock.character.species}
-            icon={
-              <ExperimentOutlined
+            ) : (
+              <WomanOutlined
                 style={{
                   fontSize: '1.5em'
                 }}
               />
-            }
-          />
-          <Details
-            text={mock.character.location.dimension}
-            icon={
-              <GatewayOutlined
-                style={{
-                  fontSize: '1.5em'
-                }}
+            )
+          }
+        />
+      </StyledContent>
+      <StyledEpisodes>
+        <h3>Episodes</h3>
+        <List
+          dataSource={state.data.character?.episode as Episode[]}
+          renderItem={(item: Episode) => (
+            <List.Item key={item.id}>
+              <List.Item.Meta
+                title={<a href="https://ant.design">{item!.name}</a>}
+                description={item!.air_date}
               />
-            }
-          />
-          <Details
-            text={mock.character.gender}
-            icon={
-              mock.character.gender === 'Male' ? (
-                <ManOutlined
-                  style={{
-                    fontSize: '1.5em'
-                  }}
-                />
-              ) : (
-                <WomanOutlined
-                  style={{
-                    fontSize: '1.5em'
-                  }}
-                />
-              )
-            }
-          />
-        </StyledContent>
-        <StyledEpisodes>
-          <h3>Episodes</h3>
-          <List
-            dataSource={mock.character.episode}
-            renderItem={(item) => (
-              <List.Item key={item.id}>
-                <List.Item.Meta
-                  title={<a href="https://ant.design">{item.name}</a>}
-                  description={item.air_date}
-                />
-              </List.Item>
-            )}
-          />
-        </StyledEpisodes>
-      </StyledDrawer>
-    </>
+            </List.Item>
+          )}
+        />
+      </StyledEpisodes>
+    </StyledDrawer>
   );
 }
+
+export { Drawer };

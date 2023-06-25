@@ -3,17 +3,19 @@
 import { Layout, Space, theme } from 'antd';
 import { Content as StyleContent, Header } from './styles';
 import { Input } from '@/components/Search/Input';
+import * as React from 'react';
+import { AppProviders } from '@/state/AppProvider';
 import { Content } from '@/components/Search/Content';
-import { QueryClientProvider } from '@tanstack/react-query';
-import { queryClient } from '@/api';
+import { Drawer } from '@/components/Details/Drawer';
+import { useDrawer } from '@/components/Details/hooks';
 
 export default function Home() {
   const handleSearch = (value: string) => {
     if (value === '' || !value) return;
-    console.log(value);
   };
+
   return (
-    <QueryClientProvider client={queryClient}>
+    <AppProviders>
       <Layout
         style={{
           padding: 0,
@@ -42,6 +44,6 @@ export default function Home() {
         </StyleContent>
         {/* <Footer></Footer> */}
       </Layout>
-    </QueryClientProvider>
+    </AppProviders>
   );
 }

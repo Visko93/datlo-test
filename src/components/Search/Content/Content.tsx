@@ -6,14 +6,18 @@ import { Loading } from './Loading';
 import { NotFound } from './NotFound';
 import { List } from './List';
 import data from '@/utils/mockData.json';
+import { Drawer } from '@/components/Details/Drawer';
+import { useDetails } from '@/state/Details';
+import { useDrawer } from '@/components/Details/hooks';
 
 export function Content({ list = [] }: SearchProps) {
-  const [loading, setLoading] = React.useState(false);
   if (data.results.length === 0)
     return (
-      <ContentWrapper>
-        <Initial />
-      </ContentWrapper>
+      <>
+        <ContentWrapper>
+          <Initial />
+        </ContentWrapper>
+      </>
     );
   return <List list={data.results} />;
 }

@@ -1,6 +1,8 @@
 interface DrawerProps {
   characterId?: string;
-  children?: React.ReactNode;
+  open?: boolean;
+  onOpen?: () => void;
+  onClose?: () => void;
 }
 
 export type { DrawerProps };
