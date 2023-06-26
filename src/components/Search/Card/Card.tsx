@@ -18,6 +18,7 @@ import {
   useDetails
 } from '@/state/Details';
 import { BLACKLIST_CHARACTER, useSearch } from '@/state/Search';
+import { item } from './RemoveButton/utils';
 
 function CharacterCard({ character, loading }: CardProps) {
   if (!character) return null;
@@ -31,12 +32,11 @@ function CharacterCard({ character, loading }: CardProps) {
   };
 
   const handleRemoveCharacter = () => {
-    console.debug('Remove Character', id);
     searchReducer && searchReducer({ type: BLACKLIST_CHARACTER, payload: id! });
   };
 
   return (
-    <Card>
+    <Card layout variants={item}>
       <StyledImageContainer>
         {!loading ? (
           <StyledImage src={image!} alt="Rick Sanchez" width={128} height={150} />

@@ -1,8 +1,9 @@
-import { Card, FloatButton } from 'antd';
+import { FloatButton } from 'antd';
 import Image from 'next/image';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-const StyledCard = styled.div`
+const StyledCard = styled(motion.div)`
   display: flex;
 
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
@@ -40,7 +41,7 @@ const StyledImageContainer = styled.div`
 `;
 const StyledContent = styled.div`
   position: relative;
-  padding: 0 0.25rem 0 0.25rem;
+  padding: 0 0 0 0.5rem;
 
   display: flex;
   flex-direction: column;
@@ -76,6 +77,10 @@ const StyledTitle = styled.h4`
 
 const StyledFloatButton = styled(FloatButton)`
   position: static;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   margin: 0;
   padding: 0;

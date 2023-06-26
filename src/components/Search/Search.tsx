@@ -1,14 +1,9 @@
 import * as React from 'react';
 import { StyledContent } from './sytle';
-import { Affix, Badge, Button, Pagination, PaginationProps, Space } from 'antd';
+import { Affix, Badge, Button, Pagination, Space } from 'antd';
 import { Input } from './Input';
 import { Content } from './Content';
-import {
-  BLACKLIST_CHARACTER_CLEAR,
-  CHANGE_PAGE,
-  CHANGE_SEARCH,
-  useSearch
-} from '@/state/Search';
+import { BLACKLIST_CHARACTER_CLEAR, CHANGE_SEARCH, useSearch } from '@/state/Search';
 import { useSearchCharacter } from './hooks/useSearchCharacter';
 
 export function Search() {
@@ -33,7 +28,6 @@ export function Search() {
     dispatch && dispatch({ type: BLACKLIST_CHARACTER_CLEAR });
   };
 
-  console.debug('State', state.data);
   return (
     <StyledContent>
       <h1>(Rick & Morty) + Dex</h1>

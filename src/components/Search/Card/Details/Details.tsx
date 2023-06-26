@@ -5,7 +5,7 @@ export function Details({ text, icon, ...rest }: DetailsProps) {
   return (
     <StyledDetails {...rest}>
       {icon ? icon : null}
-      <p>{text}</p>
+      <p title={text}>{text}</p>
     </StyledDetails>
   );
 }

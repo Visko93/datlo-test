@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { Layout, Space } from 'antd';
+import { Layout } from 'antd';
 import { Header } from './styles';
 import { AppProviders } from '@/state/AppProvider';
 import { Search } from '@/components/Search';
