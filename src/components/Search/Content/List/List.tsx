@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { CharacterCard } from '../../Card';
-import { SearchList, animationConfig } from './';
-import { ListProps } from './type';
-import { Drawer } from '@/components/Details/Drawer';
-import { useDetails } from '@/state/Details';
-import { useDrawer } from '@/components/Details/hooks';
-import { Character, Maybe } from '@/gql/graphql';
-import { useSearch } from '@/state/Search';
+import { Character } from '@/gql/graphql';
 import { AnimatePresence } from 'framer-motion';
+import { SearchList, animationConfig } from './';
+import type { ListProps } from './';
+import { Drawer } from '@/components/Details/Drawer';
+import { CharacterCard } from '@/components/Search/Card';
+import { useDrawer } from '@/components/Details/hooks';
+import { useDetails } from '@/state/Details';
+import { useSearch } from '@/state/Search';
 
 export function List({ list }: { list: ListProps }) {
   const { state: detailsState } = useDetails();

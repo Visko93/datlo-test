@@ -1,6 +1,13 @@
 # Search App
 
-### Necessidades
+- [Requerimentos](#requerimentos)
+- [Ferramentas](#ferramentas)
+- [Atividades](#atividades)
+- [Setup](#setup)
+
+---
+
+## Requerimentos
 
 - Utilizar Next.js, TypeScript, Ant Design e Styled Components;
 - Implementar a funcionalidade de buscar e exibir uma lista de personagens utilizando a
@@ -15,7 +22,7 @@
 - Implementar a funcionalidade de remoção de um personagem da lista;
 - Adicionar uma funcionalidade de visualização de detalhes de um personagem ao clicar em um item da lista;
 
-### Ferramentas
+## Ferramentas
 
 - NextJS - Front end framework (in typescript)
 - Ant Desgin - Design System Lib
@@ -24,7 +31,7 @@
 - [use query](https://tanstack.com/query/latest/docs/react/overview) - Data fetching Lib
 - [Framer Motion](https://www.framer.com/motion/) - Animation Lib
 
-### Descricao de atividades
+## Atividades
 
 - [X] Fazer mockups no figma para a aplicacao [Link](https://www.figma.com/file/A30KY5N8xqsc7xVVxPdKIt/Datlo-test?type=design&node-id=0%3A1&mode=design&t=r0V7aSjFUDsdIcdE-1)
 - [X] Criar o projeto base com Nextjs e Typescript
@@ -51,10 +58,23 @@
 
   - [X] Atualiza a list de personagens em uma nove pesquisa (nao e o estado)
   - [X] Realiza a chamada de detalhes para 1 personagem
-- [ ] (opcional)Implementar animacoes:
+- [X] (opcional)Implementar animacoes:
 
-  - [ ] Entrada de Cards na lista
-  - [ ] Abertura de detalhes
-  - [ ] Inicio da pesquisa
-  - [ ] Fim da pesquisa
-  - [ ] Mount inicial
+  - [X] Entrada de Cards na lista
+
+## Setup
+
+- Node 18.12.0^
+- npm 9.6.6^
+
+```bash
+    git clone https://github.com/Visko93/datlo-test.git
+```
+
+```bash
+    pnpm install # npm i
+```
+
+```bash
+    pnpm dev # npm run dev
+```

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Character } from '@/gql/graphql';
 
-import { fetchCharacter } from '@/api/Details';
+import { fetchCharacter } from '@/services/Details';
 import {
   useDetails,
   GET_CHARACTER_DETAILS_SUCCESS,

@@ -30,7 +30,6 @@ export function Search() {
 
   return (
     <StyledContent>
-      <h1>(Rick & Morty) + Dex</h1>
       <Space
         align="end"
         style={{
@@ -47,7 +46,7 @@ export function Search() {
         <Input
           placeholder="Search by character name"
           enterButton="Search"
-          size="large"
+          size="middle"
           handleSearch={handleSearch}
           handleChange={handleSearchChange}
           search={input}

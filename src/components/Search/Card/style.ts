@@ -6,11 +6,16 @@ import { motion } from 'framer-motion';
 const StyledCard = styled(motion.div)`
   display: flex;
 
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
 
   width: 325px;
   height: 150px;
+
+  box-shadow: 0 1rem 1.2rem rgba(255, 255, 255, 0.05);
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+
+  color: #fff;
 `;
 
 const StyledImage = styled(Image)`

@@ -1,9 +1,7 @@
 import { Characters } from '@/gql/graphql';
 import {
   BLACKLIST_CHARACTER,
-  BLACKLIST_CHARACTER_LOADING,
   BLACKLIST_CHARACTER_CLEAR,
-  CHANGE_PAGE,
   CHANGE_SEARCH,
   GET_CHARACTERS_LIST,
   GET_CHARACTERS_LIST_LOADING
@@ -64,11 +62,6 @@ export function reducer(state = initialState, action: SearchActions): SearchStat
           ...state.data,
           blackListed: newList
         }
-      };
-    case BLACKLIST_CHARACTER_LOADING:
-      return {
-        ...state,
-        removing: true
       };
     case BLACKLIST_CHARACTER_CLEAR:
       return {

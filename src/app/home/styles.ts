@@ -1,21 +1,26 @@
 'use client';
 
-import { Header, Footer } from 'antd/es/layout/layout';
 import styled from 'styled-components';
+import { Layout } from 'antd';
 
+const StyledLayout = styled(Layout)`
+  padding: 0;
+  margin: 0;
+`;
 // Define styles here
-const StyledHeader = styled(Header)`
-  top: 0;
+const StyledHeader = styled(Layout.Header)`
   width: 100%;
   display: flex;
   align-items: center;
   color: #fff;
-  background-color: #3e9e47;
+  background-color: #9ed64f;
+
+  height: 64px;
+
+  background-image: url('/assets/header.webp');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 `;
 
-const StyledFooter = styled(Footer)`
-  text-align: 'center';
-  color: '#fff';
-`;
-
-export { StyledHeader as Header, StyledFooter as Footer };
+export { StyledHeader as Header, StyledLayout as Layout };

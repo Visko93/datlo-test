@@ -3,8 +3,9 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Search a character',
-  description: 'Datlo - Rick and Morty Test'
+  title: 'Ricky and Morty',
+  description: 'Datlo - Rick and Morty Test',
+  icon: '/favicon.ico'
 };
 
 export default function HomeLayout({ children }: { children: React.ReactNode }) {
@@ -14,7 +15,8 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
       style={{
         margin: 0,
         padding: 0,
-        boxSizing: 'border-box'
+        boxSizing: 'border-box',
+        backgroundColor: '#000'
       }}
     >
       {children}

@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { fetchCharactersList } from '@/api/Search';
+import { fetchCharactersList } from '@/services/Search';
 import {
   GET_CHARACTERS_LIST,
   GET_CHARACTERS_LIST_LOADING,
   useSearch
 } from '@/state/Search';
-import { queryClient } from '@/api';
+import { queryClient } from '@/services';
 
 export function useSearchCharacter() {
-  const [page, setPage] = React.useState(3);
+  const [page, setPage] = React.useState(1);
   const { dispatch, state } = useSearch();
   const {
     data: { search }

@@ -1,4 +1,3 @@
-import { Space } from 'antd';
 import { Content } from 'antd/es/layout/layout';
 import styled from 'styled-components';
 
@@ -9,7 +8,13 @@ const StyledContent = styled(Content)`
 
   padding: 1em 4em;
 
-  background-color: #fff;
+  background-color: #000f;
+  color: #fff;
+
+  background-image: url('/assets/background.webp');
+  background-repeat: repeat;
+  background-size: cover;
+  background-position: center;
 `;
 
 export { StyledContent };

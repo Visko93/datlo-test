@@ -31,7 +31,7 @@ const StyledDetails = styled.div`
     bottom: -0.3rem;
     left: 0;
 
-    background-image: linear-gradient(to right, #000, transparent);
+    background-image: linear-gradient(to right, #fff, transparent);
   }
 `;
 

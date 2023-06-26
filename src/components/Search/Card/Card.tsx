@@ -8,8 +8,9 @@ import {
   StyledFloatButton,
   StyledImage,
   StyledImageContainer,
-  StyledTitle
-} from './style';
+  StyledTitle,
+  animationConfig
+} from './';
 import { Button, Skeleton, Space } from 'antd';
 import type { CardProps } from '../Content/type';
 import {
@@ -18,7 +19,6 @@ import {
   useDetails
 } from '@/state/Details';
 import { BLACKLIST_CHARACTER, useSearch } from '@/state/Search';
-import { item } from './RemoveButton/utils';
 
 function CharacterCard({ character, loading }: CardProps) {
   if (!character) return null;
@@ -36,7 +36,7 @@ function CharacterCard({ character, loading }: CardProps) {
   };
 
   return (
-    <Card layout variants={item}>
+    <Card {...{ animationConfig }}>
       <StyledImageContainer>
         {!loading ? (
           <StyledImage src={image!} alt="Rick Sanchez" width={128} height={150} />

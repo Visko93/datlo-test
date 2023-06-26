@@ -1,5 +1,7 @@
 export const animationConfig = {
-  hidden: { opacity: 0 },
+  initial: { x: 300, opacity: 0 },
+  animate: { x: 0, opacity: 1 },
+  exit: { x: -300, opacity: 0 },
   show: {
     opacity: 1,
     transition: {

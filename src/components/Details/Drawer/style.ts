@@ -1,12 +1,13 @@
+import { List } from 'antd';
 import styled from 'styled-components';
 
 const StyledHeader = styled.section<{ backgroundImage: string }>`
   background-image: url(${({ backgroundImage }) => backgroundImage});
   background-size: cover;
-  background-position: center;
+  background-position: left center;
   background-repeat: no-repeat;
 
-  height: 200px;
+  height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -60,6 +61,15 @@ const StyledContent = styled.section`
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 0.5rem;
   padding: 2rem 1rem;
+
+  box-shadow: 0 1rem 1.25rem rgba(0, 0, 0, 0.082);
+  background-color: rgba(0, 0, 0, 0.2);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 1rem;
+
+  margin: 1rem;
 `;
 
 const StyledEpisodes = styled.section`
@@ -67,6 +77,20 @@ const StyledEpisodes = styled.section`
   flex-direction: column;
 
   padding: 0 1rem;
+
+  color: #fff;
 `;
 
-export { StyledHeader, StyledContent, StyledEpisodes };
+const StyledList = styled(List)`
+  box-shadow: 0 1rem 1.25rem rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 1rem;
+
+  margin: 1rem;
+  padding: 1rem;
+`;
+
+export { StyledHeader, StyledContent, StyledEpisodes, StyledList };
